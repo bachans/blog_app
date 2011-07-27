@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>BlogApp</title>
+		<%= stylesheet_link_tag :all %>
+		<%= javascript_include_tag :defaults %>
+		<%= csrf_meta_tag %>
+	</head>
+	<body>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<%= render 'layouts/header' %>
+			<tr>
+				<td class="shadow_left">&nbsp;</td>
+				<td class="below_header"><h1><%= @title %></h1></td>
+				<td class="shadow_right">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="shadow_left">&nbsp;</td>
+				<td class="main_content_box">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td class="wrapper" colspan='2'>
+								<%= yield %>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td class="shadow_right">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="shadow_left">&nbsp;</td>
+				<td class="middle_spacer"><div class="bottom_content"></div></td>
+				<td class="shadow_right">&nbsp;</td>
+			</tr>
+			<%= render 'layouts/footer' %>
+		</table>
+	</body>
+</html>

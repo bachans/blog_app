@@ -1,0 +1,48 @@
+<table width='100%' border='1'>
+<tr>
+	<td width='75%' valign='top' >
+		<table width='100%'>
+			<tr>
+				<td>
+					<script type='text/javascript'>
+						function limitText(limitField, limitCount, limitNum) {
+	
+							if (limitField.value.length > limitNum) {
+								limitField.value = limitField.value.substring(0, limitNum);
+							} else {
+								limitCount.value = limitNum - limitField.value.length;
+							}
+						}
+					</script>
+					<form>
+						<textarea cols = '51' rows = '5' id = 'txt_comment' class = 'txt_comment' name = 'limitedtextarea' onKeyDown = 'limitText(this.form.limitedtextarea, this.form.countdown, 255);' onKeyUp = 'limitText(this.form.limitedtextarea, this.form.countdown, 255);'></textarea>
+						<br />
+						You have <input readonly type = 'text' name = 'countdown' size = '3' value = '255' /> characters left.
+						<input type = 'button' value = 'Make it Post' name = 'comment' onClick = 'add_comment();'>
+					</form>
+				</td>
+			</tr>
+		</table>
+	</td>
+	<td width = '25%' valign='top'>
+		<table width='100%'>
+			<tr>
+				<td colspan= '2'>
+					<% if current_user.gender == 'male'%>
+						<%= image_tag "000.gif", :height => '150px', :width => '185px' %>
+					<% else %>
+						<%= image_tag "001.gif", :height => '150px', :width => '185px' %>
+					<% end %>
+				</td>
+			</tr>
+			<tr>
+				<td colspan='2'><%= current_user.first_name%>&nbsp;<%= current_user.last_name%></td>
+			</tr>
+			<tr>
+				<td width='100px'>Microposts :</td><td align='left'><%= current_user.microposts.size%></td>
+			</tr>
+		</table>
+	</td>
+</tr>
+
+</table>

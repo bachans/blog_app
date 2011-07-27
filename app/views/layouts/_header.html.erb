@@ -1,0 +1,66 @@
+<tr>
+	<td class="shadow_left">&nbsp;</td>
+	<td class="header_column">
+		<table width="100%" border="0" cellspacing="10" cellpadding="0">
+			<tr>
+				<td class="logo_area">Logo Here </td>
+				<td width="470">
+				<% if not signed_in? %>
+					
+					<%= form_for(:session, :url => sessions_path) do |f| %>
+						<div class="field">
+							<%= f.label :login_id %><br />
+							<%= f.text_field :login_id %>
+						</div>
+						<div class="field">
+							<%= f.label :password %><br />
+							<%= f.password_field :password %>
+						</div>
+						<div class="actions">
+							<%= f.submit "Sign in" %>
+						</div>
+					<% end %>
+					
+				<% else %>
+					<div id='header_text'>
+						<div id='left_header_text'>Logged in as <%= current_user.first_name%>&nbsp;<%= current_user.last_name%></div>
+						<div id='right_header_text'><a href='/logout'>logout</a></div>
+					</div>
+				<% end %>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>&nbsp;
+					<% flash.each do |key, value| %>
+						<div class="flash <%= key %>"><%= value %></div>
+					<% end %>
+				</td>
+			</tr>
+		</table>
+	</td>
+	<td class="shadow_right">&nbsp;</td>
+</tr>
+<tr>
+	<td class="horizontal_column">&nbsp;</td>
+	<td class="horizontal_center">
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="linkcontainer">
+			<tr>
+				<td><div class="navigation"><a href="/" class="main_link">Home</a></div></td>
+				<% if not signed_in? %>
+					<td><div class="navigation"><a href="#" class="main_link">Gallery</a></div></td>
+					<td><div class="navigation"><a href="#" class="main_link">About</a></div></td>
+					<td><div class="navigation"><a href="#" class="main_link">Help</a></div></td>
+					<td><div class="navigation"><a href="/register" class="main_link">Register</a></div></td>
+				<% else %>
+					<td><div class="navigation"><a href="#" class="main_link">Followers</a></td>
+					<td><div class="navigation"><a href="#" class="main_link">Following</a></td>
+					<td><div class="navigation"><a href="#" class="main_link">My Posts</a></td>
+					<td><div class="navigation"><a href="/settings" class="main_link">Settings</a></td>
+				<% end %>
+			</tr>
+		</table>
+	</td>
+	<td class="horizontal_column">&nbsp;</td>
+</tr>
+

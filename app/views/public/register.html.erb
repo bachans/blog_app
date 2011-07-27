@@ -1,0 +1,54 @@
+<div id='registration_form'>
+					<%= form_for(@user, :url => registration_path) do |f| %>
+					<table>
+						<tr>
+							<td colspan='2'>
+								<% flash.each do |key, value| %>
+									<div class="flash <%= key %>"><%= value %></div>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<td><%= f.label :first_name %></td>
+							<td><%= f.text_field :first_name %></td>
+						</tr>
+						<tr>
+							<td><%= f.label :last_name %></td>
+							<td><%= f.text_field :last_name %></td>
+						</tr>
+						<tr>
+							<td colspan='2'>
+								<%= f.radio_button :gender, 'male', :checked => true %> 
+								<%= label :gender_male, 'Male' %>
+								<%= f.radio_button :gender, 'female' %>
+								<%= label :gender_female, 'Female' %>
+							</td>
+						</tr>
+						<tr>
+							<td><%= f.label :login_id %></td>
+							<td><%= f.text_field :login_id %></td>
+						</tr>
+						<tr>
+							<td><%= f.label :password %></td>
+							<td><%= f.password_field :password %></td>
+						</tr>
+						<tr>
+							<td><%= f.label :password_confirmation, "Confirmation" %></td>
+							<td><%= f.password_field :password_confirmation %></td>
+						</tr>
+						<tr>
+							<td colspan='2'>
+								<%= render '/shared/recaptcha' %>
+							</td>
+						</tr>
+						<tr>
+							<td colspan='2'>
+								<%= f.submit "Sign up" %>
+							</td>
+					</table>
+					<% end %>
+</div>
+<div id='registration_error'>
+	<%= render 'shared/error_messages' %>
+</div>
+				

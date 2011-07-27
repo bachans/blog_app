@@ -1,0 +1,25 @@
+<!--
+@user.errors => return array
+array.any? if blank returns false else returns true
+-->
+<% if @user.errors.any? %>
+	<div id="error_explanation">
+		<!--
+			populize is the method to set the text as plural as per the integer value
+		-->
+		<h2><%= pluralize(@user.errors.count, "error") %>
+		prohibited the registration process...</h2>
+		<p>There were problems with the following fields:</p>
+		<ul>
+		
+		<!--
+		@user.errors.full_messages => return the array of full error messages
+		-->
+		<% @user.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+		</ul>
+	</div>
+<% else %>
+	&nbsp;<br />
+<% end %>
